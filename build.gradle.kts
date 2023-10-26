@@ -30,6 +30,10 @@ subprojects {
     }
 
     extensions.configure<com.diffplug.gradle.spotless.SpotlessExtension> {
+        java {
+            target("**/*.java")
+            googleJavaFormat()
+        }
         kotlin {
             target("**/*.kt")
             targetExclude("$buildDir/**/*.kt")
@@ -47,6 +51,9 @@ subprojects {
             target("**/*.kts")
             targetExclude("$buildDir/**/*.kts")
             licenseHeaderFile(rootProject.file("spotless/spotless.license.kt"), "(^(?![\\/ ]\\*).*$)")
+        }
+        format("misc") {
+            target("**/*.xml","**/*.md","**/.gitignore")
         }
         format("xml") {
             target("**/*.xml")
