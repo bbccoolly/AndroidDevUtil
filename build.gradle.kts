@@ -2,6 +2,8 @@
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.spotless)
+    alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.kotlin.android) apply false
 }
 
 buildscript {
@@ -39,8 +41,8 @@ subprojects {
             targetExclude("$buildDir/**/*.kt")
             ktlint().setUseExperimental(true).editorConfigOverride(
                 kotlin.collections.mapOf(
-                    "indent_size" to "2",
-                    "continuation_indent_size" to "2"
+                    "indent_size" to "4",
+                    "continuation_indent_size" to "4"
                 )
             )
             licenseHeaderFile(rootProject.file("spotless/spotless.license.kt"))

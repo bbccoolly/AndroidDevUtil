@@ -107,4 +107,8 @@ dependencies {
     kapt("androidx.hilt:hilt-compiler:1.0.0")
     kapt("com.google.dagger:hilt-android-compiler:2.42")
     kapt("androidx.hilt:hilt-compiler:1.0.0")
+
+    implementation(libs.github.toaster)
+    implementation(libs.github.timber)
+
 }
