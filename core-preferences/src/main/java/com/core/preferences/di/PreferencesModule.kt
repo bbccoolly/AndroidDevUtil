@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.util.preferences.di
+package com.core.preferences.di
 
 import android.content.Context
-import com.util.preferences.Preferences
+import com.core.preferences.Preferences
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -38,7 +38,7 @@ internal object PreferencesModule {
     @Provides
     @Singleton
     fun providePreferences(@ApplicationContext context: Context): Preferences {
-        val sharedPreferences = context.getSharedPreferences("Kedio_Stream", Context.MODE_PRIVATE)
+        val sharedPreferences = context.getSharedPreferences("lcz_Stream", Context.MODE_PRIVATE)
         return Preferences(sharedPreferences)
     }
 }

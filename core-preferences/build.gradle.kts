@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.util.preferences"
+    namespace = "com.core.preferences"
     compileSdk = 33
 
     defaultConfig {

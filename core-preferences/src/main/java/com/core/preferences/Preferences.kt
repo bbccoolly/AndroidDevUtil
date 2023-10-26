@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package com.util.preferences
+package com.core.preferences
 
 import android.content.SharedPreferences
-import com.util.preferences.delegate.booleanPreferences
-import com.util.preferences.delegate.stringPreferences
+import com.core.preferences.delegate.booleanPreferences
+import com.core.preferences.delegate.stringPreferences
 import java.util.UUID
 import javax.inject.Inject
 

@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.util.preferences.delegate
+package com.core.preferences.delegate
 
 import androidx.core.content.edit
-import com.util.preferences.Preferences
+import com.core.preferences.Preferences
 import kotlin.reflect.KProperty
 
 /**
@@ -26,21 +26,28 @@ import kotlin.reflect.KProperty
  *
  * create by lcz on 2023/3/31
  */
-fun stringPreferences(key: String, defaultValue: String) =
-    StringPreferenceDelegate(key, defaultValue)
+fun booleanPreferences(
+    key: String,
+    defaultValue: Boolean
+) = BooleanPreferenceDelegate(key, defaultValue)
 
-class StringPreferenceDelegate(
+class BooleanPreferenceDelegate(
     private val key: String,
-    private val defaultValue: String
+    private val defaultValue: Boolean
 ) {
-    operator fun getValue(preferences: Preferences, property: KProperty<*>): String {
-        return preferences.sharedPreferences.getString(key, null) ?: let {
-            setValue(preferences, property, defaultValue)
-            defaultValue
-        }
+    operator fun getValue(preferences: Preferences, property: KProperty<*>): Boolean {
+        return preferences.sharedPreferences.getBoolean(key, defaultValue)
     }
 
-    operator fun setValue(preferences: Preferences, property: KProperty<*>, value: String) {
-        preferences.sharedPreferences.edit { putString(key, value) }
+    operator fun setValue(preferences: Preferences, property: KProperty<*>, value: Boolean?) {
+        if (value != null) {
+            preferences.sharedPreferences.edit {
+                putBoolean(key, value)
+            }
+        } else {
+            preferences.sharedPreferences.edit {
+                remove(key)
+            }
+        }
     }
 }
