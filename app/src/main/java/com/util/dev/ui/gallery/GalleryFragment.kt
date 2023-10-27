@@ -24,7 +24,9 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.util.dev.databinding.FragmentGalleryBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class GalleryFragment : Fragment() {
 
     private var _binding: FragmentGalleryBinding? = null
