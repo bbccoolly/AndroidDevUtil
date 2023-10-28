@@ -2,6 +2,9 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    id(libs.plugins.kotlin.kapt.get().pluginId)
+    id(libs.plugins.ksp.get().pluginId) version libs.versions.ksp.get()
+    id(libs.plugins.kotlin.parcelize.get().pluginId)
 }
 
 android {
@@ -38,4 +41,8 @@ dependencies {
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
+
+    // json parsing
+    implementation(libs.retrofit.moshi)
+    implementation(libs.moshi.codegen )
 }

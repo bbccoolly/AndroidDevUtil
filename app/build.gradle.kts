@@ -85,6 +85,7 @@ android {
     buildFeatures {
         viewBinding = true
         dataBinding = true
+        buildConfig = true
     }
 
     hilt {
@@ -117,5 +118,7 @@ dependencies {
     implementation(libs.github.toaster)
     implementation(libs.github.timber)
     debugImplementation(libs.squareup.leakcanary)
+
+    implementation(libs.androidx.work.runtime.ktx)
 
 }
