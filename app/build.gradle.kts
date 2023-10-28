@@ -19,6 +19,21 @@ val keystoreProperties = Properties()
 keystoreProperties.load(FileInputStream(keystorePropertiesFile))
 
 android {
+    signingConfigs {
+        getByName("debug") {
+            storeFile = file("D:\\workplace-git-app\\AndroidDevUtil\\app.jks")
+            storePassword = "888888"
+            keyAlias = "app"
+            keyPassword = "888888"
+        }
+        create("release") {
+            storeFile = file("D:\\workplace-git-app\\AndroidDevUtil\\app.jks")
+            storePassword = "888888"
+            keyAlias = "app"
+            keyPassword = "888888"
+        }
+    }
+
     namespace = "com.util.dev"
     compileSdk = 34
 
@@ -47,15 +62,6 @@ android {
             isMinifyEnabled = false
             isDebuggable = true
             isShrinkResources = false
-        }
-    }
-
-    signingConfigs {
-        create("release") {
-            keyAlias = keystoreProperties["keyAlias"] as String
-            keyPassword = keystoreProperties["keyPassword"] as String
-            storeFile = file(keystoreProperties["storeFile"] as String)
-            storePassword = keystoreProperties["storePassword"] as String
         }
     }
 
