@@ -116,5 +116,6 @@ dependencies {
 
     implementation(libs.github.toaster)
     implementation(libs.github.timber)
+    debugImplementation(libs.squareup.leakcanary)
 
 }
