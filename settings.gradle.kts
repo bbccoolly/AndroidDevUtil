@@ -27,3 +27,7 @@ dependencyResolutionManagement {
 rootProject.name = "AndroidDevUtil"
 include(":app")
 include(":core-preferences")
+include(":core-model")
+include(":core-network")
+include(":core-database")
+include(":core-data")
