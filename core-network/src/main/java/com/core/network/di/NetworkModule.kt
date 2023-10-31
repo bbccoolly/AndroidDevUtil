@@ -16,6 +16,7 @@
 
 package com.core.network.di
 
+import com.core.network.BuildConfig
 import com.core.network.service.SunflowerApiService
 import com.core.network.service.SunflowerDexClient
 import com.core.preferences.Preferences
@@ -48,11 +49,11 @@ internal object NetworkModule {
         return OkHttpClient.Builder()
             .addInterceptor(
                 HttpLoggingInterceptor().apply {
-//                if (BuildConfig.DEBUG) {
-//                    setLevel(HttpLoggingInterceptor.Level.BODY)
-//                } else {
-//                    setLevel(HttpLoggingInterceptor.Level.NONE)
-//                }
+                if (BuildConfig.DEBUG) {
+                    setLevel(HttpLoggingInterceptor.Level.BODY)
+                } else {
+                    setLevel(HttpLoggingInterceptor.Level.NONE)
+                }
                 }
             )
             .connectTimeout(20, TimeUnit.SECONDS) // 设置连接超时时间为30秒
