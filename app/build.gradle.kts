@@ -5,7 +5,7 @@ plugins {
     id(libs.plugins.kotlin.kapt.get().pluginId)
     id(libs.plugins.kotlin.parcelize.get().pluginId)
     id(libs.plugins.hilt.plugin.get().pluginId)
-    id("androidx.navigation.safeargs.kotlin") version "2.5.3"
+    id("androidx.navigation.safeargs")
 }
 
 android {
