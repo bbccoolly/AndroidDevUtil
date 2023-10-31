@@ -1,9 +1,3 @@
-@file:Suppress("UnstableApiUsage")
-
-import java.util.Properties
-import java.io.FileInputStream
-
-apply(plugin = "org.jetbrains.kotlin.android")
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     id(libs.plugins.android.application.get().pluginId)
@@ -13,10 +7,6 @@ plugins {
     id(libs.plugins.hilt.plugin.get().pluginId)
     id("androidx.navigation.safeargs.kotlin") version "2.5.3"
 }
-
-val keystorePropertiesFile = rootProject.file("keystore.properties")
-val keystoreProperties = Properties()
-keystoreProperties.load(FileInputStream(keystorePropertiesFile))
 
 android {
     signingConfigs {
@@ -84,12 +74,6 @@ android {
     }
     buildFeatures {
         viewBinding = true
-        dataBinding = true
-        buildConfig = true
-    }
-
-    hilt {
-        enableAggregatingTask = true
     }
 }
 
