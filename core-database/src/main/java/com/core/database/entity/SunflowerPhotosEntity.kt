@@ -13,20 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.core.network
+package com.core.database.entity
 
-import javax.inject.Qualifier
+import androidx.room.ColumnInfo
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import com.core.model.sunflower.UnsplashPhotoUrls
+import com.core.model.sunflower.UnsplashUser
 
 /**
  *
  * desc: TODO
  *
- * create by lcz on 2023/10/28
+ * create by lcz on 2023/11/2
  */
-@Qualifier
-@Retention(AnnotationRetention.RUNTIME)
-annotation class Dispatcher(val lczAppDispatchers: USAppDispatchers)
-
-enum class USAppDispatchers {
-    IO
-}
+@Entity(tableName = "sunflower")
+data class SunflowerPhotosEntity(
+    @PrimaryKey @ColumnInfo(name = "id")
+    val plantId: String,
+    @Embedded val user: UnsplashUser,
+    @Embedded val urls: UnsplashPhotoUrls
+)

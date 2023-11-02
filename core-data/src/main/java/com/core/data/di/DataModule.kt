@@ -13,20 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.core.network
+package com.core.data.di
 
-import javax.inject.Qualifier
+import com.core.data.repository.SunflowerRepository
+import com.core.data.repository.SunflowerRepositoryImpl
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 
 /**
  *
  * desc: TODO
  *
- * create by lcz on 2023/10/28
+ * create by lcz on 2023/11/2
  */
-@Qualifier
-@Retention(AnnotationRetention.RUNTIME)
-annotation class Dispatcher(val lczAppDispatchers: USAppDispatchers)
-
-enum class USAppDispatchers {
-    IO
+@Module
+@InstallIn(SingletonComponent::class)
+interface DataModule {
+    fun bindsSunFlowerRepository(sunFlowerRepositoryImpl: SunflowerRepositoryImpl): SunflowerRepository
 }

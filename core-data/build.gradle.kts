@@ -2,6 +2,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    id(libs.plugins.kotlin.kapt.get().pluginId)//    id 'kotlin-kapt'
+    id(libs.plugins.ksp.get().pluginId) version libs.versions.ksp.get()//
 }
 
 android {
@@ -35,7 +37,23 @@ android {
 
 dependencies {
 
-    implementation(libs.core.ktx)
-    implementation(libs.appcompat)
-    implementation(libs.material)
+    implementation(project(":core-model"))
+    implementation(project(":core-network"))
+    implementation(project(":core-database"))
+
+    // network sandwich 用于在 Kotlin 和 Android 上建模 Retrofit 响应和处理异常。
+    implementation(libs.sandwich)
+    implementation(libs.retrofit)
+
+    // di
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+
+    // coroutines
+    implementation(libs.coroutines)
+    kapt(libs.coroutines)
+//
+//    implementation(libs.core.ktx)
+//    implementation(libs.appcompat)
+//    implementation(libs.material)
 }

@@ -2,6 +2,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    id(libs.plugins.kotlin.kapt.get().pluginId)//    id 'kotlin-kapt'
+    id(libs.plugins.ksp.get().pluginId) version libs.versions.ksp.get()//    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -34,8 +36,25 @@ android {
 }
 
 dependencies {
+    implementation(project(":core-model"))
 
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
+
+    // room
+    implementation(libs.androidx.room.runtime)
+    kapt(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
+
+    // di
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+
+    // coroutines
+    implementation(libs.coroutines)
+
+    // json parsing
+    implementation(libs.moshi)
+    kapt(libs.moshi.codegen )
 }

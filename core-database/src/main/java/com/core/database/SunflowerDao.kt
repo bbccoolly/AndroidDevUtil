@@ -13,20 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.core.network
+package com.core.database
 
-import javax.inject.Qualifier
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import com.core.database.entity.SunflowerPhotosEntity
 
 /**
  *
  * desc: TODO
  *
- * create by lcz on 2023/10/28
+ * create by lcz on 2023/11/2
  */
-@Qualifier
-@Retention(AnnotationRetention.RUNTIME)
-annotation class Dispatcher(val lczAppDispatchers: USAppDispatchers)
+@Dao
+interface SunflowerDao {
+    @Query("SELECT * FROM sunflower ORDER BY name")
+    suspend fun getAllPlants(): List<SunflowerPhotosEntity>
 
-enum class USAppDispatchers {
-    IO
+    @Query("SELECT * FROM sunflower WHERE id = :plantId")
+    suspend fun getPlant(plantId: String): SunflowerPhotosEntity
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(plants: List<SunflowerPhotosEntity>)
 }

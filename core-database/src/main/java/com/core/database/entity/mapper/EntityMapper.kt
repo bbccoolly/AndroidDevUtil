@@ -13,20 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.core.network
-
-import javax.inject.Qualifier
+package com.core.database.entity.mapper
 
 /**
  *
  * desc: TODO
  *
- * create by lcz on 2023/10/28
+ * create by lcz on 2023/11/2
  */
-@Qualifier
-@Retention(AnnotationRetention.RUNTIME)
-annotation class Dispatcher(val lczAppDispatchers: USAppDispatchers)
+interface EntityMapper<Domain, Entity> {
 
-enum class USAppDispatchers {
-    IO
+    fun asEntity(domain: Domain): Entity
+
+    fun asDomain(entity: Entity): Domain
 }

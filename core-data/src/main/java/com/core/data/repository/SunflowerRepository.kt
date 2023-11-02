@@ -13,20 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.core.network
+package com.core.data.repository
 
-import javax.inject.Qualifier
+import androidx.annotation.WorkerThread
+import com.core.model.sunflower.SunflowerPhotos
+import kotlinx.coroutines.flow.Flow
 
 /**
  *
  * desc: TODO
  *
- * create by lcz on 2023/10/28
+ * create by lcz on 2023/11/2
  */
-@Qualifier
-@Retention(AnnotationRetention.RUNTIME)
-annotation class Dispatcher(val lczAppDispatchers: USAppDispatchers)
-
-enum class USAppDispatchers {
-    IO
+interface SunflowerRepository {
+    @WorkerThread
+    fun fetchSunflowerList(
+        searchKey: String,
+        onStart: () -> Unit,
+        onComplete: () -> Unit,
+        onError: (String?) -> Unit
+    ): Flow<List<SunflowerPhotos>>
 }

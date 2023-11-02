@@ -13,20 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.core.network
+package com.core.database
 
-import javax.inject.Qualifier
+import androidx.room.Database
+import androidx.room.RoomDatabase
+import com.core.database.entity.SunflowerPhotosEntity
 
 /**
  *
  * desc: TODO
  *
- * create by lcz on 2023/10/28
+ * create by lcz on 2023/11/2
  */
-@Qualifier
-@Retention(AnnotationRetention.RUNTIME)
-annotation class Dispatcher(val lczAppDispatchers: USAppDispatchers)
-
-enum class USAppDispatchers {
-    IO
+@Database(
+    entities = [
+        SunflowerPhotosEntity::class
+    ],
+    version = 1,
+    exportSchema = false
+)
+abstract class LczAppDatabase : RoomDatabase() {
+    abstract fun sunflowerPlantDao(): SunflowerDao
 }
